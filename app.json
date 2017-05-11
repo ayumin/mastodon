@@ -115,12 +115,16 @@
     "test": {
       "env": {
         "HEROKU": "true",
+        "LOCAL_DOMAIN": "cb6e6126.ngrok.io",
+        "LOCAL_HTTPS": "true",
         "S3_ENABLED": "false",
         "RAILS_ENV":"test",
-        "RACK_ENV": "test"
+        "RACK_ENV": "test",
+        "PARALLEL_TEST_PROCESSORS": 2
       },
       "scripts": {
-        "test": "bundle exec rake spec"
+        "test-setup": "bundle exec rake parallel:create parallel:load_schema parallel:prepar && bundle exec rails assets:precompile",
+        "test": "bundle exec parallel_test spec/ --group-by filesize --type rspec && npm test && bundle exec i18n-tasks unused"
       },
       "addons": [
         "heroku-postgresql",
