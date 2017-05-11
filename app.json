@@ -110,5 +110,22 @@
   "addons": [
     "heroku-postgresql",
     "heroku-redis"
-  ]
+  ],
+  "environments": {
+    "test": {
+      "env": {
+        "HEROKU": "true",
+        "S3_ENABLED": "false",
+        "RAILS_ENV":"test",
+        "RACK_ENV": "test"
+      },
+      "scripts": {
+        "test": "bundle exec rake rspec"
+      },
+      "addons": [
+        "heroku-postgresql",
+        "heroku-redis"
+      ]
+    }
+  }
 }
