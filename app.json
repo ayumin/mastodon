@@ -120,7 +120,8 @@
         "RACK_ENV": "test"
       },
       "scripts": {
-        "test": "bundle exec rake spec"
+        "test-setup":"rails generate rspec:install",
+        "test": "bundle exec rake rspec"
       },
       "addons": [
         "heroku-postgresql",
