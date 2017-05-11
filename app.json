@@ -120,7 +120,6 @@
         "RACK_ENV": "test"
       },
       "scripts": {
-        "test-setup":"rails generate rspec:install",
         "test": "bundle exec rake rspec"
       },
       "addons": [
